@@ -1,0 +1,58 @@
+<div class="enviroment">
+    <div class="enviroment-type">
+        <h2 class="enviroment-title">{{ data.Name }}</h2>
+        <img src="{{ data.Icon }}">
+    </div>
+    <div class="enviroment-tables">
+        <div class="enviroment-table-types">
+            <h3 class="enviroment-table-title">TYPES</h3>
+            <div class="enviroment-table-content">
+                <div *ngFor="let key of objectKeys(data.Types);">
+                    <div class="enviroment-table-types-statistics-icon attack_indication" [ngStyle]="{ 'background-image': 'url(' + data.Types[key].Icon + ')', 'background-size': data.Types[key].IconSize }"></div>
+                    <div class="enviroment-table-types-statistics-content">
+                        <h4 class="enviroment-table-statistics-value">{{ data.Types[key].Value }}</h4>
+                        <div class="enviroment-table-statistics-title" [innerHTML]="spaceToBreakLine(data.Types[key].Title)"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="enviroment-table-severities">
+            <h3 class="enviroment-table-title">SEVERITIES</h3>
+            <div class="enviroment-table-content">
+                <div class="enviroment-table-severities-statistics-graph-container">
+                    <div class="enviroment-table-severities-statistics-graph">
+                        <canvas #severitiesGraph></canvas>
+                    </div>
+                </div>
+                <div class="enviroment-table-severities-statistics">
+                    <div>
+                        <h4 class="enviroment-table-statistics-title">HIGH</h4>
+                        <div class="enviroment-table-statistics-value">{{ data.Severities.High }}</div>
+                    </div>
+                    <div>
+                        <h4 class="enviroment-table-statistics-title">MEDIUM</h4>
+                        <div class="enviroment-table-statistics-value">{{ data.Severities.Medium }}</div>
+                    </div>
+                    <div>
+                        <h4 class="enviroment-table-statistics-title">LOW</h4>
+                        <div class="enviroment-table-statistics-value">{{ data.Severities.Low }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="enviroment-table-sources">
+            <h3 class="enviroment-table-title">SOURCES (%)</h3>
+            <div class="enviroment-table-content">
+                <div *ngFor="let key of objectKeys(data.Sources);">
+                    <h4 class="enviroment-table-statistics-title">{{ data.Sources[key].Title }}</h4>
+                    <div class="enviroment-table-statistics-value">
+                        <div class="enviroment-table-statistics-value-bar">
+                            <div class="enviroment-table-statistics-value-bar-filler" [ngStyle]="{ 'width': round(data.Sources[key].Value) + '%' }"></div>
+                        </div>
+                        <span>{{ round(data.Sources[key].Value) }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

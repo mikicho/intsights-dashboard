@@ -1,0 +1,68 @@
+const MongoClient = require('mongodb').MongoClient;
+
+let db;
+const url = 'mongodb://mongo:27017';
+const dbName = 'intsight';
+
+module.exports = {
+    connect() {
+        return MongoClient.connect(url).then((client) => {
+			console.log("Connected successfully to database");
+			db = client.db(dbName);
+        }).catch((error) => {
+			console.log(error);
+		});
+    },
+    getDB() {
+        return db;
+    },
+    seed() {
+		console.log("Seed database");
+        db.collection("data").insertOne(seedData);
+    }
+}
+
+const seedData = {
+	"ClearWeb": {
+		"Types": {
+			"AttackIndication":118,
+			"DataLeakage":155,
+			"Phishing":230,
+			"BrandSecurity":16,
+			"ExploitableData":41,
+			"vip":23
+		},
+		"Severities": {
+			"High":144,
+			"Medium":349,
+			"Low":90
+		},
+		"Sources": {
+			"ApplicationStores":1.5437392795883362,
+			"SocialMedia":4.974271012006861,
+			"PasteSites":16.123499142367066,
+			"Others":77.35849056603774
+		}
+	},
+	"DarkWeb": {
+		"Types": {
+			"AttackIndication":30,
+			"DataLeakage":21,
+			"Phishing":0,
+			"BrandSecurity":0,
+			"ExploitableData":17,
+			"vip":0
+		},
+		"Severities": {
+			"High":29,
+			"Medium":35,
+			"Low":4
+		},
+		"Sources": {
+			"BlackMarkets":10.294117647058822,
+			"HackingForums":44.11764705882353,
+			"PasteSites":13.23529411764706,
+			"Others":32.35294117647059
+		}
+	}
+};

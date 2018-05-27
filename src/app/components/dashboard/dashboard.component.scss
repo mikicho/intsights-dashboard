@@ -1,0 +1,23 @@
+.dashboard {
+    background: rgb(35, 82, 121);
+    margin: 0 104px;
+    padding: 107px 42px 0;
+    min-height: calc(100vh - 63px);
+    box-sizing: border-box;
+}
+
+// Small desktop
+@media screen and (max-width: 1250px) {
+    .dashboard {
+        margin: 0 52px;
+        padding: 107px 27px 0 0;
+    }
+}
+
+// Tablet/Phones
+@media screen and (max-width: 950px) {
+    .dashboard {
+        margin: 0 15px;
+        padding: 27px 27px 0;
+    }
+}

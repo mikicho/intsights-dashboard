@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600');
+@import '~normalize.css/normalize.css';
+@import "variables";
+
+body {
+    background: rgb(25, 41, 52);
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+}
+
+h2, h3, h4 {
+    font-weight: 400;
+    margin: 0;
+}
+
+h2 {
+    font-size: $text-big;
+}
+
+h3 {
+    font-size: $text-big;
+}
+
+h4 {
+    font-size: $text-small;
+}
